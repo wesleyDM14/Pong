@@ -1,14 +1,14 @@
-package com.dankicode.pong;
+package com.wesleydm14.pong;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Enemy {
-
-	public double x,y;
-	public int width, height;
+public class Player {
 	
-	public Enemy(double x, double y) {
+	public boolean right, left;
+	public int x,y, width, height;
+	
+	public Player(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.width = 40;
@@ -16,7 +16,12 @@ public class Enemy {
 	}
 	
 	public void tick() {
-		this.x += (Game.ball.x - this.x - 5) * 0.2;
+		if (this.right) {
+			x+=2;
+		}else if (this.left) {
+			x-=2;
+		}
+		
 		if (this.x + width > Game.WIDTH ) {
 			this.x = Game.WIDTH - this.width;
 		}else if (this.x < 0) {
@@ -25,19 +30,27 @@ public class Enemy {
 	}
 	
 	public void render(Graphics g) {
-		g.setColor(Color.RED);
-		g.fillRect((int)x,(int) y, width, height);
+		g.setColor(Color.BLUE);
+		g.fillRect(x, y, width, height);
 	}
 	
-	public void setX(double x) {
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+	
+	public boolean getRight() {
+		return this.right;
+	}
+	
+	public void setX(int x) {
 		this.x = x;
 	}
 	
-	public double getX() {
+	public int getX() {
 		return this.x;
 	}
 		
-	public double getY() {
+	public int getY() {
 		return this.y;
 	}
 	
@@ -48,4 +61,5 @@ public class Enemy {
 	public int getHeight() {
 		return this.height;
 	}
+
 }

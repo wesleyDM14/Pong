@@ -1,4 +1,4 @@
-package com.dankicode.pong;
+package com.wesleydm14.pong;
 
 import java.awt.Color;
 import java.awt.Graphics;

@@ -18,8 +18,10 @@ public class Ball {
 		this.width = 5;
 		this.height = 5;
 		this.speed = 1.6;
-		this.dx = new Random().nextGaussian();
-		this.dy = new Random().nextGaussian();
+		
+		int angle = new Random().nextInt(120 - 45) + 45;
+		this.dx = Math.cos(Math.toRadians(angle));
+		this.dy = Math.sin(Math.toRadians(angle));
 	}
 	
 	public void tick() {
@@ -43,10 +45,21 @@ public class Ball {
 		Rectangle boundsEnemy = new Rectangle((int)Game.enemy.x, (int)Game.enemy.y, Game.enemy.width, Game.enemy.height);
 		
 		if (bounds.intersects(boundsPlayer)) {
-			dy*= -1;
+			int angle = new Random().nextInt(120 - 45) + 45;
+			this.dx = Math.cos(Math.toRadians(angle));
+			this.dy = Math.sin(Math.toRadians(angle));
+			if (dy > 0 ) {
+				dy*= -1;
+			}
 			speed += 0.1;
+			
 		}else if (bounds.intersects(boundsEnemy)) {
-			dy*= -1;
+			int angle = new Random().nextInt(120 - 45) + 45;
+			this.dx = Math.cos(Math.toRadians(angle));
+			this.dy = Math.sin(Math.toRadians(angle));
+			if (dy < 0 ) {
+				dy*= -1;
+			}
 			speed += 0.1;
 		}
 		

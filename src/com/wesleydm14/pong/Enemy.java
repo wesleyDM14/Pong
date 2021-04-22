@@ -11,16 +11,16 @@ public class Enemy {
 	public Enemy(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.width = 40;
-		this.height = 10;
+		this.width = 10;
+		this.height = 40;
 	}
 	
 	public void tick() {
-		this.x += (Game.ball.x - this.x - 5) * 0.2;
-		if (this.x + width > Game.WIDTH ) {
-			this.x = Game.WIDTH - this.width;
-		}else if (this.x < 0) {
-			this.x = 0;
+		this.y += (Game.ball.y - this.y - 5) * 0.2;
+		if (this.y + height > Game.HEIGHT ) {
+			this.y = Game.HEIGHT - this.height;
+		}else if (this.y < 0) {
+			this.y = 0;
 		}
 	}
 	

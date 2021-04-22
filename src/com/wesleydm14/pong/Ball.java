@@ -19,23 +19,23 @@ public class Ball {
 		this.height = 5;
 		this.speed = 1.6;
 		
-		int angle = new Random().nextInt(120 - 45) + 45;
+		int angle = new Random().nextInt(90);
 		this.dx = Math.cos(Math.toRadians(angle));
 		this.dy = Math.sin(Math.toRadians(angle));
 	}
 	
 	public void tick() {
 		
-		if (this.x + (this.dx*this.speed) + this.width >= Game.WIDTH) {
-			this.dx*= -1;
-		}else if(this.x + (this.dx*this.speed) + this.width <= 0) {
-			this.dx*= -1;
+		if (this.y + (this.dy*this.speed) + this.height >= Game.HEIGHT) {
+			this.dy*= -1;
+		}else if(this.y + (this.dy*this.speed) + this.height <= 0) {
+			this.dy*= -1;
 		}
 		
-		if (this.y >= Game.HEIGHT) {
+		if (this.x >= Game.WIDTH) {
 			new Game();
 			return;
-		}else if (this.y < 0) {
+		}else if (this.x < 0) {
 			new Game();
 			return;
 		}
@@ -46,19 +46,19 @@ public class Ball {
 		
 		if (bounds.intersects(boundsPlayer)) {
 			int angle = new Random().nextInt(120 - 45) + 45;
-			this.dx = Math.cos(Math.toRadians(angle));
-			this.dy = Math.sin(Math.toRadians(angle));
-			if (dy > 0 ) {
-				dy*= -1;
+			this.dy = Math.cos(Math.toRadians(angle));
+			this.dx = Math.sin(Math.toRadians(angle));
+			if (dx > 0 ) {
+				dx*= -1;
 			}
 			speed += 0.1;
 			
 		}else if (bounds.intersects(boundsEnemy)) {
 			int angle = new Random().nextInt(120 - 45) + 45;
-			this.dx = Math.cos(Math.toRadians(angle));
-			this.dy = Math.sin(Math.toRadians(angle));
-			if (dy < 0 ) {
-				dy*= -1;
+			this.dy = Math.cos(Math.toRadians(angle));
+			this.dx = Math.sin(Math.toRadians(angle));
+			if (dx < 0 ) {
+				dx*= -1;
 			}
 			speed += 0.1;
 		}

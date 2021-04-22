@@ -5,27 +5,27 @@ import java.awt.Graphics;
 
 public class Player {
 	
-	public boolean right, left;
+	public boolean up, down;
 	public int x,y, width, height;
 	
 	public Player(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.width = 40;
-		this.height = 10;
+		this.width = 10;
+		this.height = 40;
 	}
 	
 	public void tick() {
-		if (this.right) {
-			x+=2;
-		}else if (this.left) {
-			x-=2;
+		if (this.down) {
+			y+=2;
+		}else if (this.up) {
+			y-=2;
 		}
 		
-		if (this.x + width > Game.WIDTH ) {
-			this.x = Game.WIDTH - this.width;
-		}else if (this.x < 0) {
-			this.x = 0;
+		if (this.y + height > Game.HEIGHT ) {
+			this.y = Game.HEIGHT - this.height;
+		}else if (this.y < 0) {
+			this.y = 0;
 		}
 	}
 	
@@ -34,16 +34,8 @@ public class Player {
 		g.fillRect(x, y, width, height);
 	}
 	
-	public void setRight(boolean right) {
-		this.right = right;
-	}
-	
-	public boolean getRight() {
-		return this.right;
-	}
-	
-	public void setX(int x) {
-		this.x = x;
+	public void setY(int y) {
+		this.y = y;
 	}
 	
 	public int getX() {
